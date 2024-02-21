@@ -47,6 +47,14 @@ nav {
         color: $grey;
       }
     }
+    :first-child {
+      :first-child {
+        background-color: $green;
+      }
+      :nth-child(2) {
+        color: $green;
+      }
+    }
   }
 }
 .staff-section {

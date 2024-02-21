@@ -51,6 +51,12 @@ nav ul li :first-child {
 nav ul li :nth-child(2) {
   color: #4d545a;
 }
+nav ul :first-child :first-child {
+  background-color: green;
+}
+nav ul :first-child :nth-child(2) {
+  color: green;
+}
 
 .staff-section {
   background: #f5f7fa;
