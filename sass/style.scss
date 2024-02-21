@@ -17,13 +17,14 @@ body {
 .container {
   width: 70%;
   height: 80vh;
-  @include flexCenter;
+  display: flex;
+  justify-content: center;
 }
 nav {
   width: 30%;
   height: 100%;
   background-color: $side-bar;
-  padding: 20px 25px;
+  padding: $padding;
   ul {
     li {
       list-style: none;
@@ -45,6 +46,56 @@ nav {
       :nth-child(2) {
         color: $grey;
       }
+    }
+  }
+}
+.staff-section {
+  background: $main-bg;
+  width: 70%;
+  height: 100%;
+  padding: $padding;
+  h3 {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 20px;
+  }
+  .staff {
+    padding-top: 10px;
+    .card {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px;
+      background-color: $white;
+      img {
+        border-radius: 50%;
+      }
+      .staff-info {
+        h4 {
+          font-weight: 400;
+        }
+        span {
+          color: $grey;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  .btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    margin-top: 50%;
+    button {
+      cursor: pointer;
+      display: flex;
+      justify-content: flex-end;
+      align-items: end;
+      padding: 6px 10px;
+      color: $white;
+      background-color: $green;
+      border: none;
+      border-radius: 2px;
     }
   }
 }
