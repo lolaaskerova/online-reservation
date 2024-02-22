@@ -58,51 +58,254 @@ nav ul :first-child :nth-child(2) {
   color: green;
 }
 
-.staff-section {
+.header {
   background: #f5f7fa;
   width: 70%;
   height: 100%;
   padding: 20px 25px;
 }
-.staff-section h3 {
+.header h3 {
   border-bottom: 1px solid lightgray;
   padding-bottom: 20px;
 }
-.staff-section .staff {
+
+.staff-section .staff,
+.staff-section .service,
+.service-section .staff,
+.service-section .service {
   padding-top: 10px;
 }
-.staff-section .staff .card {
+.staff-section .staff .card,
+.staff-section .service .card,
+.service-section .staff .card,
+.service-section .service .card {
+  margin-top: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
   padding: 6px;
   background-color: #fff;
 }
-.staff-section .staff .card img {
+.staff-section .staff .card .inner,
+.staff-section .service .card .inner,
+.service-section .staff .card .inner,
+.service-section .service .card .inner {
+  display: flex;
+  gap: 10px;
+}
+.staff-section .staff .card .price,
+.staff-section .service .card .price,
+.service-section .staff .card .price,
+.service-section .service .card .price {
+  color: green;
+  text-overflow: 400;
+  font-size: 18px;
+}
+.staff-section .staff .card .left,
+.staff-section .service .card .left,
+.service-section .staff .card .left,
+.service-section .service .card .left {
+  display: flex;
+  gap: 10px;
+}
+.staff-section .staff .card img,
+.staff-section .service .card img,
+.service-section .staff .card img,
+.service-section .service .card img {
   border-radius: 50%;
 }
-.staff-section .staff .card .staff-info h4 {
+.staff-section .staff .card .staff-info h4,
+.staff-section .staff .card .service-info h4,
+.staff-section .service .card .staff-info h4,
+.staff-section .service .card .service-info h4,
+.service-section .staff .card .staff-info h4,
+.service-section .staff .card .service-info h4,
+.service-section .service .card .staff-info h4,
+.service-section .service .card .service-info h4 {
   font-weight: 400;
 }
-.staff-section .staff .card .staff-info span {
+.staff-section .staff .card .staff-info span,
+.staff-section .staff .card .service-info span,
+.staff-section .service .card .staff-info span,
+.staff-section .service .card .service-info span,
+.service-section .staff .card .staff-info span,
+.service-section .staff .card .service-info span,
+.service-section .service .card .staff-info span,
+.service-section .service .card .service-info span {
   color: #4d545a;
   font-size: 13px;
 }
-.staff-section .btn {
+.staff-section .staff-btn,
+.service-section .staff-btn {
   display: flex;
   justify-content: flex-end;
   align-items: end;
-  margin-top: 50%;
+  margin-top: 40%;
 }
-.staff-section .btn button {
-  cursor: pointer;
+.staff-section .staff-btn button,
+.service-section .staff-btn button {
   display: flex;
   justify-content: flex-end;
   align-items: end;
-  padding: 6px 10px;
   color: #fff;
-  background-color: green;
+  background-color: #7948ce;
   border: none;
+}
+
+.service-section {
+  display: none;
+}
+.service-section .buttons {
+  margin-top: 40%;
+}
+
+button {
+  cursor: pointer;
   border-radius: 2px;
+  padding: 6px 10px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.buttons :first-child {
+  border: 1px solid #292d32;
+}
+.buttons :nth-child(2) {
+  border: none;
+  background-color: #7948ce;
+  color: #fff;
+}
+
+.date-section {
+  display: none;
+}
+.date-section .date {
+  margin-top: 6%;
+  display: flex;
+  justify-content: space-between;
+}
+.date-section .date .calendar table {
+  width: 50%;
+  border-collapse: collapse;
+  background-color: #fff;
+  height: 100%;
+}
+.date-section .date .calendar table caption {
+  margin-bottom: 10px;
+}
+.date-section .date .calendar table caption span {
+  cursor: pointer;
+  font-size: 18px;
+}
+.date-section .date .calendar table thead {
+  padding: 10px;
+  text-align: center;
+}
+.date-section .date .calendar table thead tr {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 20px;
+}
+.date-section .date .calendar table thead tr th {
+  color: lightgray;
+  font-weight: 400;
+}
+.date-section .date .calendar table th,
+.date-section .date .calendar table td {
+  padding: 10px;
+  text-align: center;
+}
+.date-section .date .calendar table td {
+  cursor: pointer;
+}
+.date-section .date .calendar table td:hover {
+  background-color: #f0f0f0;
+}
+.date-section .date .time {
+  text-align: center;
+  width: 50%;
+}
+.date-section .date .time h4 {
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.date-section .date .time .card {
+  background-color: #fff;
+  padding: 10px;
+  height: 100%;
+}
+.date-section .date .time .card h4 {
+  color: #7948ce;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 10px;
+}
+.date-section .date .time .card .times {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 30px;
+}
+.date-section .date .time .card .times .range {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: lightgray;
+  padding: 20px 25px;
+  cursor: pointer;
+}
+.date-section .buttons {
+  margin-top: 10%;
+}
+
+.confirm-section {
+  display: none;
+}
+.confirm-section .buttons {
+  margin-top: 10%;
+}
+.confirm-section .details {
+  margin-top: 6%;
+}
+.confirm-section .details form {
+  width: 100%;
+}
+.confirm-section .details form .top,
+.confirm-section .details form .bottom {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+.confirm-section .details form input {
+  min-width: 340px;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  background-color: #fff;
+  outline: none;
+  padding: 10px 8px;
+}
+.confirm-section .details form .inp {
+  display: flex;
+  flex-direction: column;
+}
+.confirm-section .details .selected-details {
+  background-color: #fff;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding: 20px 25px;
+}
+.confirm-section .details .selected-details .selected {
+  margin-bottom: 5px;
+}
+.confirm-section .details .selected-details .selected :first-child {
+  color: #7948ce;
+}
+.confirm-section .details .selected-details .total :nth-child(2) {
+  color: green;
+  font-weight: 400;
 }/*# sourceMappingURL=style.css.map */

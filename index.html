@@ -1,48 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./sass/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./sass/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <title>Reservation</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main class="container">
-        <nav>
-            <ul>
-                <li> <span>1</span> <span> Staff</span></li>
-                <li> <span>2</span> <span> Service</span></li>
-                <li> <span>3</span> <span> Date & Time</span></li>
-                <li> <span>4</span> <span> Confirmation</span></li>
-            </ul>
-        </nav>
-        <div class="staff-section">
-            <h3>Select Staff</h3>
-            <div class="staff">
-                <div class="card">
-                    <div class="img">
-                        <img src="./assets/doctor-1.png" alt="image">
-                    </div>
-                    <div class="staff-info">
-                        <h4>Alexy Rosetta</h4>
-                        <span>alexyrosetta@gmail.com</span>
-                    </div>
-                </div>
+      <nav>
+        <ul>
+          <li><span>1</span> <span> Staff</span></li>
+          <li><span>2</span> <span> Service</span></li>
+          <li><span>3</span> <span> Date & Time</span></li>
+          <li><span>4</span> <span> Confirmation</span></li>
+        </ul>
+      </nav>
+      <!-- SELECT STAFF SECTION -->
+      <div class="header staff-section">
+        <h3>Select Staff</h3>
+        <div class="staff">
+          <div class="card">
+            <div class="inner">
+              <div class="img">
+                <img src="./assets/doctor-1.png" alt="image" />
+              </div>
+              <div class="staff-info">
+                <h4>Alexy Rosetta</h4>
+                <span>alexyrosetta@gmail.com</span>
+              </div>
             </div>
-            <div class="btn">
-                <button>NEXT</button>
+          </div>
+          <div class="card">
+            <div class="inner">
+              <div class="img">
+                <img src="./assets/doctor-2.png" alt="image" />
+              </div>
+              <div class="staff-info">
+                <h4>Maria July</h4>
+                <span>mariajuly@gmail.com</span>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="btn staff-btn">
+          <button>NEXT</button>
+        </div>
+      </div>
+      <!-- SELECT SERVICE SECTION -->
+      <div class="header service-section">
+        <h3>Select Service</h3>
+        <div class="service">
+          <div class="card">
+            <div class="left">
+              <div class="img">
+                <img src="./assets/oral.png" alt="image" />
+              </div>
+              <div class="service-info">
+                <h4>Oral hygiene</h4>
+                <span>1 hour</span>
+              </div>
+            </div>
+            <div class="price">$50</div>
+          </div>
+          <div class="card">
+            <div class="left">
+              <div class="img">
+                <img src="./assets/implant.png" alt="image" />
+              </div>
+              <div class="service-info">
+                <h4>Implants</h4>
+                <span>1 hour 30 minutes</span>
+              </div>
+            </div>
+            <div class="price">$120</div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="service-back">BACK</button>
+          <button class="service-next">NEXT</button>
+        </div>
+      </div>
+      <!-- SELECT DATE SECTION -->
+      <div class="header date-section">
+        <h3>Select date & time</h3>
+        <div class="date">
+          <div class="calendar">
+            <table>
+              <caption>
+                <span><</span>
+                February 2024
+                <span>></span>
+              </caption>
+              <thead>
+                <tr>
+                  <th>Sun</th>
+                  <th>Mon</th>
+                  <th>Tue</th>
+                  <th>Wed</th>
+                  <th>Thu</th>
+                  <th>Fri</th>
+                  <th>Sat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                </tr>
+                <tr>
+                  <td>18</td>
+                  <td>19</td>
+                  <td>20</td>
+                  <td>21</td>
+                  <td>22</td>
+                  <td>23</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>25</td>
+                  <td>26</td>
+                  <td>27</td>
+                  <td>28</td>
+                  <td>29</td>
+                  <td>1</td>
+                  <td>2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="time">
+            <h4>Time</h4>
+            <div class="card">
+              <h4>Select date</h4>
+              <div class="times">
+                <div class="range">
+                  <span>09:00</span>
+                  <span>09:30</span>
+                </div>
+                <div class="range">
+                  <span>09:30</span>
+                  <span>10:0</span>
+                </div>
+                <div class="range">
+                  <span>10:00</span>
+                  <span>10:30</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="service-back">BACK</button>
+          <button class="service-next">NEXT</button>
+        </div>
+      </div>
+      <!-- CONFIRM SECTION -->
+      <div class="header confirm-section">
+        <h3>Confirm details</h3>
+        <div class="details">
+          <form>
+            <div class="top">
+              <div class="inp">
+                <label for="first name">First name*</label>
+                <input type="text" id="first name" />
+              </div>
+              <div class="inp">
+                <label for="last name">Last name*</label>
+                <input type="text" id="last name" />
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="inp">
+                <label for="email">Email*</label>
+                <input type="email" id="email" />
+              </div>
+              <div class="inp">
+                <label for="phone">Phone</label>
+                <input type="text" id="Phone" />
+              </div>
+            </div>
+          </form>
+          <div class="selected-details">
+            <div class="selected">
+              <span>Staff:</span>
+              <span>Maria July</span>
+            </div>
+            <div class="selected">
+              <span>Service:</span>
+              <span>Oral hygiene</span>
+            </div>
+            <div class="selected">
+              <span>Date:</span>
+              <span>2024-02-24 / 09:30 - 10:00</span>
+            </div>
+            <div class="selected total">
+              <span>Total:</span>
+              <span>$123</span>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button class="service-back">BACK</button>
+          <button class="service-next">NEXT</button>
+        </div>
+      </div>
     </main>
-
-
-</body>
-
+  </body>
 </html>

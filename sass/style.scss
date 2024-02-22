@@ -8,7 +8,7 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background-color: #7948ce;
+  background-color: $body-bg;
   width: 100%;
   height: 100%;
   @include flexCenter;
@@ -57,28 +57,47 @@ nav {
     }
   }
 }
-.staff-section {
+.header {
   background: $main-bg;
   width: 70%;
   height: 100%;
   padding: $padding;
   h3 {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid $lightgray;
     padding-bottom: 20px;
   }
-  .staff {
+}
+
+.staff-section,
+.service-section {
+  .staff,
+  .service {
     padding-top: 10px;
     .card {
+      margin-top: 10px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
+      @include flexBetween;
       gap: 10px;
       padding: 6px;
       background-color: $white;
+      .inner {
+        display: flex;
+        gap: 10px;
+      }
+      .price {
+        color: $green;
+        text-overflow: 400;
+        font-size: 18px;
+      }
+      .left {
+        display: flex;
+        gap: 10px;
+      }
       img {
         border-radius: 50%;
       }
-      .staff-info {
+      .staff-info,
+      .service-info {
         h4 {
           font-weight: 400;
         }
@@ -89,21 +108,168 @@ nav {
       }
     }
   }
-  .btn {
+  .staff-btn {
     display: flex;
     justify-content: flex-end;
     align-items: end;
-    margin-top: 50%;
+    margin-top: 40%;
     button {
-      cursor: pointer;
       display: flex;
       justify-content: flex-end;
       align-items: end;
-      padding: 6px 10px;
       color: $white;
-      background-color: $green;
+      background-color: $body-bg;
       border: none;
+    }
+  }
+}
+.service-section {
+  display: none;
+  .buttons {
+    margin-top: 40%;
+  }
+}
+
+button {
+  cursor: pointer;
+  border-radius: 2px;
+  padding: $btn-padding;
+}
+.buttons {
+  @include flexBetween;
+  :first-child {
+    border: 1px solid $side-bar;
+  }
+  :nth-child(2) {
+    border: none;
+    background-color: $body-bg;
+    color: $white;
+  }
+}
+.date-section {
+  display: none;
+  .date {
+    margin-top: 6%;
+    display: flex;
+    justify-content: space-between;
+    .calendar {
+      table {
+        width: 50%;
+        border-collapse: collapse;
+        background-color: $white;
+        height: 100%;
+        caption {
+          margin-bottom: 10px;
+          span {
+            cursor: pointer;
+            font-size: 18px;
+          }
+        }
+        thead {
+          padding: 10px;
+          text-align: center;
+          tr {
+            border-bottom: 1px solid $lightgray;
+            padding-bottom: 20px;
+            th {
+              color: $lightgray;
+              font-weight: 400;
+            }
+          }
+        }
+        th,
+        td {
+          padding: 10px;
+          text-align: center;
+        }
+        td {
+          cursor: pointer;
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+      }
+    }
+    .time {
+      text-align: center;
+      width: 50%;
+      h4 {
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 12px;
+      }
+      .card {
+        background-color: $white;
+        padding: 10px;
+        height: 100%;
+        h4 {
+          color: $body-bg;
+          border-bottom: 1px solid $lightgray;
+          padding-bottom: 10px;
+        }
+        .times {
+          @include flexEvenly;
+          margin-top: 30px;
+          .range {
+            @include flexCenter;
+            flex-direction: column;
+            background-color: $lightgray;
+            padding: $padding;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .buttons {
+    margin-top: 10%;
+  }
+}
+.confirm-section {
+  display: none;
+  .buttons {
+    margin-top: 10%;
+  }
+  .details {
+    margin-top: 6%;
+    form {
+      width: 100%;
+      .top,
+      .bottom {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 15px;
+      }
+      input {
+        min-width: 340px;
+        border: 1px solid $lightgray;
+        border-radius: 2px;
+        background-color: $white;
+        outline: none;
+        padding: 10px 8px;
+      }
+      .inp {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .selected-details {
+      background-color: $white;
+      border: 1px solid $lightgray;
       border-radius: 2px;
+      padding: $padding;
+      .selected {
+        margin-bottom: 5px;
+        :first-child {
+          color: $body-bg;
+        }
+      }
+      .total {
+        :nth-child(2) {
+          color: $green;
+          font-weight: 400;
+        }
+      }
     }
   }
 }
