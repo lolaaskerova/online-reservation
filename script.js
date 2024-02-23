@@ -1,17 +1,4 @@
-const Patient = [
-  {
-    staff_name: "",
-    service_name: "",
-    date: "",
-    time: "",
-    customer: {
-      name: "",
-      surname: "",
-      email: "",
-      phone: "",
-    },
-  },
-];
+const Patient = [];
 
 //!mapping staff section
 const staffs = [
