@@ -17,76 +17,39 @@
     <main class="container">
       <nav>
         <ul>
-          <li><span>1</span> <span> Staff</span></li>
-          <li><span>2</span> <span> Service</span></li>
-          <li><span>3</span> <span> Date & Time</span></li>
-          <li><span>4</span> <span> Confirmation</span></li>
+          <li><span class="nav-num-1">1</span> <span class="nav-1"> Staff</span></li>
+          <li>
+            <span class="nav-num-2">2</span> <span class="nav-2"> Service</span>
+          </li>
+          <li>
+            <span class="nav-num-3">3</span>
+            <span class="nav-3"> Date & Time</span>
+          </li>
+          <li>
+            <span class="nav-num-4">4</span>
+            <span class="nav-4"> Confirmation</span>
+          </li>
         </ul>
       </nav>
       <!-- SELECT STAFF SECTION -->
       <div class="header staff-section">
         <h3>Select Staff</h3>
-        <div class="staff">
-          <div class="card">
-            <div class="inner">
-              <div class="img">
-                <img src="./assets/doctor-1.png" alt="image" />
-              </div>
-              <div class="staff-info">
-                <h4>Alexy Rosetta</h4>
-                <span>alexyrosetta@gmail.com</span>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="inner">
-              <div class="img">
-                <img src="./assets/doctor-2.png" alt="image" />
-              </div>
-              <div class="staff-info">
-                <h4>Maria July</h4>
-                <span>mariajuly@gmail.com</span>
-              </div>
-            </div>
-          </div>
+        <div class="staff"></div>
+        <div class="staff-btn">
+          <button class="staff-next">NEXT</button>
         </div>
-        <div class="btn staff-btn">
-          <button>NEXT</button>
-        </div>
+        <div class="staff-toast">🛈 SELECT STAFF</div>
       </div>
       <!-- SELECT SERVICE SECTION -->
       <div class="header service-section">
         <h3>Select Service</h3>
-        <div class="service">
-          <div class="card">
-            <div class="left">
-              <div class="img">
-                <img src="./assets/oral.png" alt="image" />
-              </div>
-              <div class="service-info">
-                <h4>Oral hygiene</h4>
-                <span>1 hour</span>
-              </div>
-            </div>
-            <div class="price">$50</div>
-          </div>
-          <div class="card">
-            <div class="left">
-              <div class="img">
-                <img src="./assets/implant.png" alt="image" />
-              </div>
-              <div class="service-info">
-                <h4>Implants</h4>
-                <span>1 hour 30 minutes</span>
-              </div>
-            </div>
-            <div class="price">$120</div>
-          </div>
-        </div>
+        <div class="service"></div>
         <div class="buttons">
           <button class="service-back">BACK</button>
           <button class="service-next">NEXT</button>
         </div>
+        <div class="service-toast">🛈 SELECT SERVICE</div>
+
       </div>
       <!-- SELECT DATE SECTION -->
       <div class="header date-section">
@@ -181,8 +144,8 @@
           </div>
         </div>
         <div class="buttons">
-          <button class="service-back">BACK</button>
-          <button class="service-next">NEXT</button>
+          <button class="date-back">BACK</button>
+          <button class="date-next">NEXT</button>
         </div>
       </div>
       <!-- CONFIRM SECTION -->
@@ -231,10 +194,13 @@
           </div>
         </div>
         <div class="buttons">
-          <button class="service-back">BACK</button>
-          <button class="service-next">NEXT</button>
+          <button class="confirm-back">BACK</button>
+          <button class="confirm-next">NEXT</button>
         </div>
+        <div class="date-toast">🛈 SELECT DATE</div>
       </div>
     </main>
+
+    <script src="./script.js"></script>
   </body>
 </html>

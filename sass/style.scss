@@ -32,7 +32,6 @@ nav {
       align-items: center;
       gap: 10px;
       margin-top: 10px;
-      cursor: pointer;
       :first-child {
         color: $white;
         width: 20px;
@@ -48,11 +47,21 @@ nav {
       }
     }
     :first-child {
+      cursor: pointer;
       :first-child {
         background-color: $green;
       }
       :nth-child(2) {
         color: $green;
+        cursor: pointer;
+      }
+    }
+    :nth-child(2),
+    :nth-child(3),
+    :nth-child(4) {
+      cursor: not-allowed;
+      :nth-child(1) {
+        cursor: not-allowed;
       }
     }
   }
@@ -70,6 +79,7 @@ nav {
 
 .staff-section,
 .service-section {
+  position: relative;
   .staff,
   .service {
     padding-top: 10px;
@@ -113,6 +123,8 @@ nav {
     justify-content: flex-end;
     align-items: end;
     margin-top: 40%;
+    border-top: 1px solid $lightgray;
+    padding-top: 10px;
     button {
       display: flex;
       justify-content: flex-end;
@@ -121,6 +133,21 @@ nav {
       background-color: $body-bg;
       border: none;
     }
+  }
+  .staff-toast,
+  .service-toast,
+  .date-toast {
+    background-color: #f4be6c;
+    color: $white;
+    padding: 15px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    display: none;
+    transition: opacity 0.3s ease;
   }
 }
 .service-section {
@@ -137,6 +164,8 @@ button {
 }
 .buttons {
   @include flexBetween;
+  border-top: 1px solid $lightgray;
+  padding-top: 10px;
   :first-child {
     border: 1px solid $side-bar;
   }
@@ -222,13 +251,13 @@ button {
     }
   }
   .buttons {
-    margin-top: 10%;
+    margin-top: 14%;
   }
 }
 .confirm-section {
   display: none;
   .buttons {
-    margin-top: 10%;
+    margin-top: 12%;
   }
   .details {
     margin-top: 6%;
