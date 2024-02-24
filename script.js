@@ -138,7 +138,7 @@ next_service_btn.addEventListener("click", () => {
 
 //!
 
-//! next to date & back to service functionality
+//! next to service & back to staff functionality
 let select_service_click = false;
 const selected_services = document.querySelectorAll(".service-card");
 const next_date_btn = document.querySelector(".service-next");
@@ -199,52 +199,193 @@ next_date_btn.addEventListener("click", () => {
 
 //!
 
-//! next to date & back to service functionality
-let select_date_click = false;
-// const selected_services = document.querySelectorAll(".service-card");
-const next_confirm_btn = document.querySelector(".confirm-next");
-const next_confirm_toast = document.querySelector(".date-toast");
-const confirm_section = document.querySelector(".confirm-section");
-const back_to_date = document.querySelector(".confirm-back");
+// dinamic calendar and pick date functionality
 
-selected_services.forEach((selected_service) => {
-  selected_service.addEventListener("click", () => {
-    selected_services.forEach((selected_service) => {
-      selected_service.style.borderWidth = "0";
-    });
+let currentMonth;
+let currentYear;
 
-    selected_service.style.borderWidth = "1px";
-    selected_service.style.borderStyle = "solid";
-    selected_service.style.borderColor = "green";
-    select_service_click = true;
-    back_to_date.addEventListener("click", () => {
-      date_section.style.display = "block";
-      confirm_section.style.display = "none";
-      third_nav_num.style.backgroundColor = "#7948ce";
-      third_nav_num.innerHTML = "✔";
-      fourth_nav_name.style.color = "white";
-      fourth_nav_num.style.backgroundColor = "green";
-      fourth_nav_name.style.color = "green";
-      fourth_nav_num.style.cursor = "pointer";
-      fourth_nav_name.style.cursor = "pointer";
-      selected_service.style.borderWidth = "1px";
-      selected_service.style.borderStyle = "solid";
-      selected_service.style.borderColor = "green";
-    });
+function generateCalendar(year, month) {
+  const nextMonth = document.querySelector(".next");
+  const prevMonth = document.querySelector(".prev");
+
+  const tableBody = document.querySelector("tbody");
+  tableBody.innerHTML = "";
+
+  const date = new Date(year, month - 1, 1);
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  let row = document.createElement("tr");
+  let cell;
+
+  for (let i = 0; i < date.getDay(); i++) {
+    cell = document.createElement("td");
+    row.appendChild(cell);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    cell = document.createElement("td");
+    cell.textContent = day;
+    row.appendChild(cell);
+
+    if (date.getDay() === 6) {
+      tableBody.appendChild(row);
+      row = document.createElement("tr");
+    }
+
+    date.setDate(date.getDate() + 1);
+  }
+
+  if (row.cells.length > 0) {
+    while (row.cells.length < 7) {
+      cell = document.createElement("td");
+      row.appendChild(cell);
+    }
+    tableBody.appendChild(row);
+  }
+
+  document.getElementById("monthAndYear").textContent = `${getMonthName(
+    month
+  )} ${year}`;
+  currentYear = year;
+  currentMonth = month;
+
+  function getMonthName(month) {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return months[month - 1];
+  }
+
+  prevMonth.addEventListener("click", () => {
+    currentMonth--;
+    if (currentMonth < 1) {
+      currentMonth = 12;
+      currentYear--;
+    }
+    generateCalendar(currentYear, currentMonth);
+  });
+
+  nextMonth.addEventListener("click", () => {
+    currentMonth++;
+    if (currentMonth > 12) {
+      currentMonth = 1;
+      currentYear++;
+    }
+    generateCalendar(currentYear, currentMonth);
+  });
+}
+const currentDate = new Date();
+currentYear = currentDate.getFullYear();
+currentMonth = currentDate.getMonth() + 1;
+generateCalendar(currentYear, currentMonth);
+
+// set hours
+
+const times = document.querySelector(".times");
+const oralHygieneTimes = [
+  {
+    start_time: "9:00",
+    end_time: "10:00",
+  },
+  {
+    start_time: "11:00",
+    end_time: "12:00",
+  },
+];
+
+const implantTimes = [
+  {
+    start_time: "9:00",
+    end_time: "10:30",
+  },
+  {
+    start_time: "11:00",
+    end_time: "12:30",
+  },
+];
+
+const today = new Date();
+const selected_day = document.querySelector(".selected-date");
+const allDays = document.querySelectorAll("td");
+allDays.forEach((allday) => {
+  allday.addEventListener("click", (event) => {
+    const setDate = `${event.target.innerHTML} - ${
+      today.getMonth() + 1
+    } - ${today.getFullYear()}`;
+    selected_day.textContent = setDate;
+    Patient.date = setDate;
+
+    if (Patient.service_name == "Oral hygiene") {
+      oralHygieneTimes.forEach((time) => {
+        times.innerHTML += `
+      <div class="range">
+                    <span class="first-hour">${time.start_time}</span>
+                    <span class="second-hour">${time.end_time}</span>
+                  </div>
+      `;
+      });
+    } else if (Patient.service_name == "Implants") {
+      implantTimes.forEach((time) => {
+        times.innerHTML += `
+      <div class="range">
+                    <span class="first-hour">${time.start_time}</span>
+                    <span class="second-hour">${time.end_time}</span>
+                  </div>
+      `;
+      });
+    }
   });
 });
 
-next_confirm_btn.addEventListener("click", () => {
-  if (select_date_click) {
+//! next to confirm page
+let select_confirm_click = false;
+const ranges = document.querySelectorAll(".times");
+const next_confirm_toast = document.querySelector(".date-toast");
+const next_to_confirm = document.querySelector(".date-next");
+const back_to_date = document.querySelector(".confirm-back");
+const confirm_section = document.querySelector(".confirm-section");
+
+ranges.forEach((range) => {
+  range.addEventListener("click", () => {
+    ranges.forEach((range) => {
+      range.style.borderWidth = "0";
+    });
+    range.style.borderWidth = "1px";
+    range.style.borderStyle = "solid";
+    range.style.borderColor = "green";
+
+    var singleDate = range.querySelector(".range ");
+    var date_patient = singleDate.querySelector(".first-hour");
+    Patient.time = date_patient.innerHTML;
+    select_confirm_click = true;
+  });
+});
+
+next_to_confirm.addEventListener("click", () => {
+  if (select_confirm_click) {
     date_section.style.display = "none";
     confirm_section.style.display = "block";
     third_nav_num.style.backgroundColor = "#7948ce";
     third_nav_num.innerHTML = "✔";
     third_nav_name.style.color = "white";
     fourth_nav_num.style.backgroundColor = "green";
-    fourth_nav_name.style.color = "green";
+    fourth_nav_name.style.color = "white";
     fourth_nav_num.style.cursor = "pointer";
     fourth_nav_name.style.cursor = "pointer";
+    range.style.borderWidth = "1px";
+    range.style.borderStyle = "solid";
+    range.style.borderColor = "green";
   } else {
     next_confirm_toast.style.display = "block";
     setTimeout(() => {
@@ -252,7 +393,45 @@ next_confirm_btn.addEventListener("click", () => {
     }, 300);
   }
 });
+back_to_date.addEventListener("click", () => {
+  date_section.style.display = "block";
+  confirm_section.style.display = "none";
+  third_nav_num.style.backgroundColor = "#7948ce";
+  third_nav_num.innerHTML = "✔";
+  third_nav_name.style.color = "white";
+  fourth_nav_num.style.backgroundColor = "green";
+  fourth_nav_name.style.color = "green";
+  fourth_nav_num.style.cursor = "pointer";
+  fourth_nav_name.style.cursor = "pointer";
+  range.style.borderWidth = "1px";
+  range.style.borderStyle = "solid";
+  range.style.borderColor = "green";
+});
 
-//!
+////FINAL CONFIRM
+const confirmAll = document.querySelector(".confirm-next");
+const selected_staff_name = document.querySelector(".selected-staff-name");
+const selected_service_name = document.querySelector(".selected-service-name");
+const selected_dates = document.querySelector(".selected-dates");
+const selected_price = document.querySelector(".selected-price");
+
+if (Patient.service_name == "Oral hygiene") {
+  selected_price.textContent = `$50`;
+} else {
+  selected_price.textContent = `$120`;
+}
+
+selected_staff_name.textContent = Patient.staff_name;
+console.log(selected_staff_name.textContent);
+selected_service_name.textContent = Patient.service_name;
+selected_dates.textContent = Patient.date / Patient.time;
+
+confirmAll.addEventListener("click", () => {
+  Patient.customer.name = document.getElementById("first-name").value;
+  Patient.customer.surname = document.getElementById("last-name").value;
+  Patient.customer.email = document.getElementById("email").value;
+  Patient.customer.phone = document.getElementById("phone").value;
+});
+// Get the input element by its id
 
 console.log(Patient);

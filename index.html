@@ -17,7 +17,9 @@
     <main class="container">
       <nav>
         <ul>
-          <li><span class="nav-num-1">1</span> <span class="nav-1"> Staff</span></li>
+          <li>
+            <span class="nav-num-1">1</span> <span class="nav-1"> Staff</span>
+          </li>
           <li>
             <span class="nav-num-2">2</span> <span class="nav-2"> Service</span>
           </li>
@@ -49,7 +51,6 @@
           <button class="service-next">NEXT</button>
         </div>
         <div class="service-toast">🛈 SELECT SERVICE</div>
-
       </div>
       <!-- SELECT DATE SECTION -->
       <div class="header date-section">
@@ -58,9 +59,9 @@
           <div class="calendar">
             <table>
               <caption>
-                <span><</span>
-                February 2024
-                <span>></span>
+                <span class="prev"><</span>
+                <span id="monthAndYear"></span>
+                <span class="next">></span>
               </caption>
               <thead>
                 <tr>
@@ -73,73 +74,14 @@
                   <th>Sat</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                  <td>7</td>
-                  <td>8</td>
-                  <td>9</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <td>11</td>
-                  <td>12</td>
-                  <td>13</td>
-                  <td>14</td>
-                  <td>15</td>
-                  <td>16</td>
-                  <td>17</td>
-                </tr>
-                <tr>
-                  <td>18</td>
-                  <td>19</td>
-                  <td>20</td>
-                  <td>21</td>
-                  <td>22</td>
-                  <td>23</td>
-                  <td>24</td>
-                </tr>
-                <tr>
-                  <td>25</td>
-                  <td>26</td>
-                  <td>27</td>
-                  <td>28</td>
-                  <td>29</td>
-                  <td>1</td>
-                  <td>2</td>
-                </tr>
-              </tbody>
+              <tbody></tbody>
             </table>
           </div>
           <div class="time">
             <h4>Time</h4>
             <div class="card">
-              <h4>Select date</h4>
-              <div class="times">
-                <div class="range">
-                  <span>09:00</span>
-                  <span>09:30</span>
-                </div>
-                <div class="range">
-                  <span>09:30</span>
-                  <span>10:0</span>
-                </div>
-                <div class="range">
-                  <span>10:00</span>
-                  <span>10:30</span>
-                </div>
-              </div>
+              <h4 class="selected-date">Select Date</h4>
+              <div class="times"></div>
             </div>
           </div>
         </div>
@@ -147,7 +89,9 @@
           <button class="date-back">BACK</button>
           <button class="date-next">NEXT</button>
         </div>
+        <div class="date-toast">🛈 SELECT DATE</div>
       </div>
+
       <!-- CONFIRM SECTION -->
       <div class="header confirm-section">
         <h3>Confirm details</h3>
@@ -155,12 +99,12 @@
           <form>
             <div class="top">
               <div class="inp">
-                <label for="first name">First name*</label>
-                <input type="text" id="first name" />
+                <label for="first-name">First name*</label>
+                <input type="text" id="first-name" />
               </div>
               <div class="inp">
-                <label for="last name">Last name*</label>
-                <input type="text" id="last name" />
+                <label for="last-name">Last name*</label>
+                <input type="text" id="last-name" />
               </div>
             </div>
             <div class="bottom">
@@ -170,26 +114,26 @@
               </div>
               <div class="inp">
                 <label for="phone">Phone</label>
-                <input type="text" id="Phone" />
+                <input type="text" id="phone" />
               </div>
             </div>
           </form>
           <div class="selected-details">
             <div class="selected">
               <span>Staff:</span>
-              <span>Maria July</span>
+              <span class="selected-staff-name"></span>
             </div>
             <div class="selected">
               <span>Service:</span>
-              <span>Oral hygiene</span>
+              <span class="selected-service-name"></span>
             </div>
             <div class="selected">
               <span>Date:</span>
-              <span>2024-02-24 / 09:30 - 10:00</span>
+              <span class="selected-dates"></span>
             </div>
             <div class="selected total">
               <span>Total:</span>
-              <span>$123</span>
+              <span class="selected-price"></span>
             </div>
           </div>
         </div>
@@ -197,7 +141,6 @@
           <button class="confirm-back">BACK</button>
           <button class="confirm-next">NEXT</button>
         </div>
-        <div class="date-toast">🛈 SELECT DATE</div>
       </div>
     </main>
 
