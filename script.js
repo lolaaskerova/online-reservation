@@ -496,6 +496,14 @@ confirmAll.addEventListener("click", () => {
     });
     document.querySelector(".selected-date").textContent = "Select Date";
     times.innerHTML = "";
+    name_input.value = "";
+    surname_input.value = "";
+    email_input.value = "";
+    phone_input.value = "";
+    selected_staff_name.textContent = "";
+    selected_service_name.textContent = "";
+    selected_dates.textContent = "";
+    selected_price.textContent = "";
   } else {
     confirm_toast.style.display = "block";
   }
