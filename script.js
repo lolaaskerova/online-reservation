@@ -78,6 +78,7 @@ const next_service_toast = document.querySelector(".staff-toast");
 const staff_section = document.querySelector(".staff-section");
 const service_section = document.querySelector(".service-section");
 const back_to_staff = document.querySelector(".service-back");
+
 //nav style
 const first_nav_num = document.querySelector(".nav-num-1");
 const first_nav_name = document.querySelector(".nav-1");
@@ -87,6 +88,7 @@ const third_nav_num = document.querySelector(".nav-num-3");
 const third_nav_name = document.querySelector(".nav-3");
 const fourth_nav_num = document.querySelector(".nav-num-4");
 const fourth_nav_name = document.querySelector(".nav-4");
+
 selected_staffs.forEach((selected_staff) => {
   selected_staff.addEventListener("click", () => {
     selected_staffs.forEach((selected_staff) => {
@@ -107,12 +109,10 @@ selected_staffs.forEach((selected_staff) => {
       first_nav_num.innerHTML = "✔";
       first_nav_name.style.color = "white";
       second_nav_num.style.backgroundColor = "green";
-      second_nav_name.style.color = "green";
       second_nav_num.style.cursor = "pointer";
+      second_nav_name.style.color = "green";
       second_nav_name.style.cursor = "pointer";
-      selected_staff.style.borderWidth = "1px";
-      selected_staff.style.borderStyle = "solid";
-      selected_staff.style.borderColor = "green";
+      selected_staff.classList.add("selected-style");
     });
   });
 });
@@ -138,7 +138,7 @@ next_service_btn.addEventListener("click", () => {
 
 //!
 
-//! next to service & back to staff functionality
+//! next to date & back to service functionality
 let select_service_click = false;
 const selected_services = document.querySelectorAll(".service-card");
 const next_date_btn = document.querySelector(".service-next");
@@ -171,9 +171,7 @@ selected_services.forEach((selected_service) => {
       third_nav_name.style.color = "green";
       third_nav_num.style.cursor = "pointer";
       third_nav_name.style.cursor = "pointer";
-      selected_service.style.borderWidth = "1px";
-      selected_service.style.borderStyle = "solid";
-      selected_service.style.borderColor = "green";
+      selected_service.classList.add("selected-style");
     });
   });
 });
@@ -348,29 +346,55 @@ allDays.forEach((allday) => {
   });
 });
 
-//! next to confirm page
+//! next to confirm page back to date functionality
 let select_confirm_click = false;
-const ranges = document.querySelectorAll(".times");
 const next_confirm_toast = document.querySelector(".date-toast");
 const next_to_confirm = document.querySelector(".date-next");
 const back_to_date = document.querySelector(".confirm-back");
 const confirm_section = document.querySelector(".confirm-section");
 
-ranges.forEach((range) => {
-  range.addEventListener("click", () => {
-    ranges.forEach((range) => {
-      range.style.borderWidth = "0";
-    });
-    range.style.borderWidth = "1px";
-    range.style.borderStyle = "solid";
-    range.style.borderColor = "green";
+const ranges = document.querySelectorAll(".range");
 
-    var singleDate = range.querySelector(".range ");
-    var date_patient = singleDate.querySelector(".first-hour");
-    Patient.time = date_patient.innerHTML;
+times.addEventListener("click", function (event) {
+  const clickedRange = event.target.closest(".range");
+  if (clickedRange) {
+    // Remove existing styles from all ranges
+    const allRanges = document.querySelectorAll(".range");
+    allRanges.forEach((range) => {
+      range.style.borderWidth = "0";
+      range.classList.remove("selected-style");
+    });
+
+    // Apply styles to the clicked range
+    clickedRange.style.borderWidth = "1px";
+    clickedRange.style.borderStyle = "solid";
+    clickedRange.style.borderColor = "green";
+    clickedRange.classList.add("selected-style");
+    // Get the start_hour element within the clicked range
+    const start_hour = clickedRange.querySelector(".first-hour");
+    Patient.time = start_hour.innerHTML;
     select_confirm_click = true;
-  });
+    // Handle back_to_service button click
+    back_to_service.addEventListener("click", () => {
+      service_section.style.display = "block";
+      date_section.style.display = "none";
+      second_nav_num.style.backgroundColor = "#7948ce";
+      second_nav_num.innerHTML = "✔";
+      second_nav_name.style.color = "white";
+      third_nav_num.style.backgroundColor = "green";
+      third_nav_num.style.cursor = "pointer";
+      third_nav_name.style.color = "green";
+      third_nav_name.style.cursor = "pointer";
+      // Add selected-style class to the clicked range
+      clickedRange.classList.add("selected-style");
+    });
+  }
 });
+
+const selected_staff_name = document.querySelector(".selected-staff-name");
+const selected_service_name = document.querySelector(".selected-service-name");
+const selected_dates = document.querySelector(".selected-dates");
+const selected_price = document.querySelector(".selected-price");
 
 next_to_confirm.addEventListener("click", () => {
   if (select_confirm_click) {
@@ -383,9 +407,14 @@ next_to_confirm.addEventListener("click", () => {
     fourth_nav_name.style.color = "white";
     fourth_nav_num.style.cursor = "pointer";
     fourth_nav_name.style.cursor = "pointer";
-    range.style.borderWidth = "1px";
-    range.style.borderStyle = "solid";
-    range.style.borderColor = "green";
+    selected_staff_name.textContent = Patient.staff_name;
+    selected_service_name.textContent = Patient.service_name;
+    selected_dates.innerHTML += `<span>${Patient.date} / ${Patient.time}</span> `;
+    if (Patient.service_name == "Oral hygiene") {
+      selected_price.textContent = "$50";
+    } else {
+      selected_price.textContent = "$120";
+    }
   } else {
     next_confirm_toast.style.display = "block";
     setTimeout(() => {
@@ -393,45 +422,83 @@ next_to_confirm.addEventListener("click", () => {
     }, 300);
   }
 });
-back_to_date.addEventListener("click", () => {
-  date_section.style.display = "block";
-  confirm_section.style.display = "none";
-  third_nav_num.style.backgroundColor = "#7948ce";
-  third_nav_num.innerHTML = "✔";
-  third_nav_name.style.color = "white";
-  fourth_nav_num.style.backgroundColor = "green";
-  fourth_nav_name.style.color = "green";
-  fourth_nav_num.style.cursor = "pointer";
-  fourth_nav_name.style.cursor = "pointer";
-  range.style.borderWidth = "1px";
-  range.style.borderStyle = "solid";
-  range.style.borderColor = "green";
-});
+
+//!
 
 ////FINAL CONFIRM
+let succes = false;
 const confirmAll = document.querySelector(".confirm-next");
-const selected_staff_name = document.querySelector(".selected-staff-name");
-const selected_service_name = document.querySelector(".selected-service-name");
-const selected_dates = document.querySelector(".selected-dates");
-const selected_price = document.querySelector(".selected-price");
 
-if (Patient.service_name == "Oral hygiene") {
-  selected_price.textContent = `$50`;
-} else {
-  selected_price.textContent = `$120`;
-}
-
-selected_staff_name.textContent = Patient.staff_name;
-console.log(selected_staff_name.textContent);
-selected_service_name.textContent = Patient.service_name;
-selected_dates.textContent = Patient.date / Patient.time;
+const name_input = document.querySelector("#first-name");
+const surname_input = document.querySelector("#last-name");
+const email_input = document.querySelector("#email");
+const phone_input = document.querySelector("#phone");
+const confirm_toast = document.querySelector(".confirm-toast");
 
 confirmAll.addEventListener("click", () => {
-  Patient.customer.name = document.getElementById("first-name").value;
-  Patient.customer.surname = document.getElementById("last-name").value;
-  Patient.customer.email = document.getElementById("email").value;
-  Patient.customer.phone = document.getElementById("phone").value;
+  if (
+    name_input.value.trim() !== "" &&
+    surname_input.value.trim() !== "" &&
+    email_input.value.trim() !== "" &&
+    phone_input.value.trim() !== ""
+  ) {
+    succes = true;
+  }
+  if (succes) {
+    if (Patient.length === 0) {
+      Patient.push({
+        customer: {
+          name: name_input.value,
+          surname: surname_input.value,
+          email: email_input.value,
+          phone: phone_input.value,
+        },
+      });
+    } else {
+      Patient[0].customer.name = name_input.value;
+      Patient[0].customer.surname = surname_input.value;
+      Patient[0].customer.email = email_input.value;
+      Patient[0].customer.phone = phone_input.value;
+    }
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Confirmation successfully completed!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    confirm_section.style.display = "none";
+    staff_section.style.display = "block";
+    first_nav_name.style.color = "green";
+    second_nav_name.style.color = "#4d545a";
+    third_nav_name.style.color = "#4d545a";
+    fourth_nav_name.style.color = "#4d545a";
+    first_nav_num.innerHTML = "1";
+    first_nav_num.style.backgroundColor = "green";
+    second_nav_num.innerHTML = "2";
+    second_nav_num.style.backgroundColor = "#4d545a";
+    third_nav_num.innerHTML = "3";
+    third_nav_num.style.backgroundColor = "#4d545a";
+    fourth_nav_num.style.backgroundColor = "#4d545a";
+    select_staff_click = false;
+    select_service_click = false;
+    select_confirm_click = false;
+    succes = false;
+    selected_staffs.forEach((s) => {
+      s.style.borderWidth = "0";
+      s.style.borderStyle = "none";
+      s.style.borderColor = "none";
+    });
+    selected_services.forEach((ser) => {
+      ser.style.borderWidth = "0";
+      ser.style.borderStyle = "none";
+      ser.style.borderColor = "none";
+    });
+    document.querySelector(".selected-date").textContent = "Select Date";
+    times.innerHTML = "";
+  } else {
+    confirm_toast.style.display = "block";
+  }
 });
-// Get the input element by its id
 
 console.log(Patient);

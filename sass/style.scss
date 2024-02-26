@@ -137,7 +137,8 @@ nav {
 }
 .staff-toast,
 .service-toast,
-.date-toast{
+.date-toast,
+.confirm-toast {
   background-color: #f4be6c;
   color: $white;
   padding: 15px;
@@ -279,7 +280,7 @@ button {
     margin-top: 10%;
   }
   .details {
-    margin-top: 6%;
+    margin-top: 3%;
     form {
       width: 100%;
       .top,
@@ -320,4 +321,8 @@ button {
       }
     }
   }
+}
+
+.selected-style {
+  border: 1px solid $green !important;
 }
